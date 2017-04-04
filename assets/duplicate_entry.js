@@ -10,7 +10,7 @@
 	var DuplicateEntry = {
 		
 		init: function() {
-			var save_button = $('fieldset.primary');
+			var save_button = $('div#field-33');
 			
 			var form = $('form');
 			var form_action = form.attr('action');
@@ -31,7 +31,7 @@
 				sections += '</select>';
 			}
 			
-			save_button.after('<span id="duplicate-entry" style="display:block;float:right;"></span>');
+			save_button.after('<div style="padding-bottom: 30px; margin-top: -15px; margin-right: -10px;"><span id="duplicate-entry" style="display:block;float:right;"></span></div>');
 			$('#duplicate-entry')
 			
 			.append('<input type="submit" value="' + Symphony.Language.get("Duplicate Entry") + '" id="duplicate-button" name="action[save-duplicate]"/>')
