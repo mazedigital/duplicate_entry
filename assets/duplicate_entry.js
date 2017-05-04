@@ -34,7 +34,7 @@
 			save_button.after('<div style="padding-bottom: 30px; margin-top: -15px; margin-right: -10px;"><span id="duplicate-entry" style="display:block;float:right;"></span></div>');
 			$('#duplicate-entry')
 			
-			.append('<input type="submit" value="' + Symphony.Language.get("Duplicate Entry") + '" id="duplicate-button" name="action[save-duplicate]"/>')
+			.append('<input type="button" class="button" value="' + Symphony.Language.get("Duplicate Entry") + '" id="duplicate-button" name="action[save-duplicate]"/>')
 			.append(sections);
 			
 			$('#duplicate-button').click(function() {
