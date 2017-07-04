@@ -34,16 +34,19 @@
 			save_button.after('<div style="padding-bottom: 30px; margin-top: -15px; margin-right: -10px;"><span id="duplicate-entry" style="display:block;float:right;"></span></div>');
 			$('#duplicate-entry')
 			
-			.append('<input type="submit" class="button" value="' + Symphony.Language.get("Duplicate Entry") + '" id="duplicate-button" name="action[save-duplicate]"/>')
+			.append('<input type="submit" class="button" value="' + Symphony.Language.get("Duplicate Entry") + '" id="duplicate-button" name="action[save-duplicate]"/> ')
 			// .append('<button type="submit" class="button" value="' + Symphony.Language.get("Duplicate Entry") + '" id="duplicate-button" name="action[save-duplicate]">'+ Symphony.Language.get("Duplicate Entry") + '</button>')
 			.append(sections);
 
-			function keydownFunction(){
-				$("input[name='action[save-duplicate]']").prop("type", "button");
-			}
+			$( 'form' ).bind('keypress', function(e){
+			    if ( e.keyCode == 13 ) {
+			    	$("input[name='action[save-duplicate]']").prop("type", "button");
+			    }
+			});
+
 			$(document).on('click','#duplicate-button',function(){
 				$("input[name='action[save-duplicate]']").prop("type", "button");
-			}
+			});
 
 
 			$('#duplicate-button').click(function() {
