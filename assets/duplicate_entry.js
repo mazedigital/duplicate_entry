@@ -34,11 +34,19 @@
 			save_button.after('<div style="padding-bottom: 30px; margin-top: -15px; margin-right: -10px;"><span id="duplicate-entry" style="display:block;float:right;"></span></div>');
 			$('#duplicate-entry')
 			
-			.append('<input type="button" class="button" value="' + Symphony.Language.get("Duplicate Entry") + '" id="duplicate-button" name="action[save-duplicate]"/>')
+			.append('<input type="submit" class="button" value="' + Symphony.Language.get("Duplicate Entry") + '" id="duplicate-button" name="action[save-duplicate]"/>')
+			// .append('<button type="submit" class="button" value="' + Symphony.Language.get("Duplicate Entry") + '" id="duplicate-button" name="action[save-duplicate]">'+ Symphony.Language.get("Duplicate Entry") + '</button>')
 			.append(sections);
-			
-			$('#duplicate-button').click(function() {
 
+			function keydownFunction(){
+				$("input[name='action[save-duplicate]']").prop("type", "button");
+			}
+			$(document).on('click','#duplicate-button',function(){
+				$("input[name='action[save-duplicate]']").prop("type", "button");
+			}
+
+
+			$('#duplicate-button').click(function() {
 
 				var clearFields = Symphony.Context.get('duplicate-entry')['clear-fields'];
 
@@ -59,8 +67,6 @@
 				}
 
 
-
-
 				$(this).attr('name', 'action[save]');
 				var action = form_action.replace(/edit\/[0-9]+\/(.+)?/, 'new/');
 				if (duplicate_sections != null) {
@@ -68,6 +74,35 @@
 				}
 				form.attr('action', action);
 			});
+
+			$('#duplicate-entry').keypress(function(e) {
+			    if(e.which == 13) { // Checks for the enter key
+			        e.preventDefault(); // Stops IE from triggering the button to be clicked
+			    }
+			});
+
+		
+				// $("#duplicate-button").keypress(function(e) {
+				// 	if (e.keyCode == 13) {
+				// 	    self.validateNightModalForm();
+				// 	    e.preventDefault()
+				// 	    return false;
+				// 	}
+				// });
+			  // $("#duplicate-button").keypress(function(e) {
+			  //   if (e.which == 13) {
+			  //     $('#submit').click();
+			  //     return false;
+			  //   }
+
+			  //   return true;
+			  // });
+
+			// $("#duplicate-button").keypress(function(e){
+			// 	if(e1.keyCode==13){          // if user is hitting enter
+			//        e.preventDefault();
+			//     }
+			// });
 		}
 		
 	}
